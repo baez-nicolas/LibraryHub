@@ -131,7 +131,31 @@ body[data-theme='dark'] .navbar {
   letter-spacing: -0.5px;
 }
 
-.brand-icon {
+.brand-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.brand-logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-light {
+  display: inline-block;
+}
+
+.logo-dark {
+  display: none;
+}
+
+body[data-theme='dark'] .logo-light {
+  display: none;
+}
+
+body[data-theme='dark'] .logo-dark {
   display: inline-block;
 }
 
