@@ -1,14 +1,11 @@
-// Variables globales
 let libros = [];
 let librosFiltrados = [];
 let carrito = [];
 let stockOriginal = {};
 
-// Constantes de la bilbioteca
 const LIMITE_ENVIO_GRATIS = 50000;
 const COSTO_ENVIO = 2500;
 
-// Función para debounce (la copié de internet)
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -21,12 +18,10 @@ function debounce(func, wait) {
   };
 }
 
-// Formatear precio en pesos argentinos
 function formatearPrecio(precio) {
   return precio.toLocaleString("es-AR");
 }
 
-// Mostrar notificaciones con Toastify
 function mostrarToast(mensaje, tipo = "success") {
   const colores = {
     success: "linear-gradient(to right, #00b09b, #96c93d)",
@@ -45,7 +40,6 @@ function mostrarToast(mensaje, tipo = "success") {
   }).showToast();
 }
 
-// Cargar datos de libros desde JSON
 async function cargarLibros() {
   try {
     const response = await fetch("./data/libros.json");
@@ -54,7 +48,6 @@ async function cargarLibros() {
     }
     const data = await response.json();
 
-    // Convertir IDs a string por las dudas
     libros = (Array.isArray(data) ? data : []).map(libro => ({
       ...libro,
       id: String(libro.id)
@@ -69,7 +62,6 @@ async function cargarLibros() {
   }
 }
 
-// Cargar stock desde localStorage
 function cargarStockGuardado() {
   const stockGuardado = localStorage.getItem("stock_biblioteca");
   if (stockGuardado) {
@@ -81,12 +73,10 @@ function cargarStockGuardado() {
         }
       }
     } catch (e) {
-      // Si hay error parseando, usar stock original
     }
   }
 }
 
-// Guardar stock en localStorage
 function guardarStock() {
   stockOriginal = {};
   for (const libro of libros) {
@@ -95,7 +85,6 @@ function guardarStock() {
   localStorage.setItem("stock_biblioteca", JSON.stringify(stockOriginal));
 }
 
-// Cargar carrito desde localStorage
 function cargarCarrito() {
   const carritoGuardado = localStorage.getItem("carrito_baez");
   if (carritoGuardado) {
@@ -108,13 +97,11 @@ function cargarCarrito() {
   actualizarBadgeCarrito();
 }
 
-// Guardar carrito en localStorage
 function guardarCarrito() {
   localStorage.setItem("carrito_baez", JSON.stringify(carrito));
   actualizarBadgeCarrito();
 }
 
-// Actualizar el badge del carrito
 function actualizarBadgeCarrito() {
   let total = 0;
   for (const item of carrito) {
@@ -126,13 +113,11 @@ function actualizarBadgeCarrito() {
   }
 }
 
-// Obtener cantidad de un libro en el carrito
 function obtenerCantidadCarrito(libroId) {
   const item = carrito.find(item => item.id === libroId);
   return item ? item.cantidad : 0;
 }
 
-// Agregar libro al carrito
 function agregarAlCarrito(libroId) {
   const libro = libros.find(l => l.id === libroId);
   if (!libro) return;
@@ -141,7 +126,6 @@ function agregarAlCarrito(libroId) {
   const cantidadActual = existente ? existente.cantidad : 0;
   const nuevaCantidad = cantidadActual + 1;
 
-  // Verificar stock
   if (nuevaCantidad > libro.stock) {
     Swal.fire({
       icon: "warning",
@@ -170,7 +154,6 @@ function agregarAlCarrito(libroId) {
   mostrarToast(`"${libro.titulo}" agregado al carrito`);
 }
 
-// Quitar producto del carrito
 function quitarDelCarrito(libroId) {
   const item = carrito.find(i => i.id === libroId);
   if (!item) return;
@@ -193,7 +176,6 @@ function quitarDelCarrito(libroId) {
   });
 }
 
-// Cambiar cantidad de un producto
 function cambiarCantidad(libroId, nuevaCantidad) {
   const item = carrito.find(i => i.id === libroId);
   const libro = libros.find(l => l.id === libroId);
@@ -214,7 +196,6 @@ function cambiarCantidad(libroId, nuevaCantidad) {
   renderLibros();
 }
 
-// Vaciar todo el carrito
 function vaciarCarrito() {
   if (carrito.length === 0) {
     Swal.fire('Carrito vacío', 'El carrito ya está vacío', 'info');
@@ -239,7 +220,6 @@ function vaciarCarrito() {
   });
 }
 
-// Renderizar la grilla de libros
 function renderLibros() {
   const grid = document.querySelector("#grid");
 
@@ -250,21 +230,25 @@ function renderLibros() {
 
     return `
       <div class="col-12 col-sm-6 col-lg-3">
-        <div class="card h-100 shadow-sm">
+        <div class="card h-100">
           <img src="${libro.portada}" class="card-img-top img-crop" alt="${libro.titulo}">
           <div class="card-body d-flex flex-column">
-            <h3 class="h6 mb-0" style="min-height:2.6rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
+            <h3 class="h6 mb-2 fw-bold" style="min-height:2.6rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
               ${libro.titulo}
             </h3>
-            <p class="text-muted small mb-2" style="min-height:2.2rem;margin-top:-0.4rem;display:-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;display:-webkit-box;">
-              ${libro.autor} • ${libro.genero} • ${libro.anio}
+            <p class="text-muted small mb-3" style="min-height:2.2rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
+              <span class="d-block"><strong>📝 ${libro.autor}</strong></span>
+              <span class="d-block">📚 ${libro.genero} • 📅 ${libro.anio}</span>
             </p>
-            <div class="d-flex justify-content-between align-items-center" style="min-height:1.8rem;">
-              <strong>$${formatearPrecio(libro.precio)}</strong>
-              <small class="text-muted">${tieneStock ? `Stock: ${stockDisponible}` : "Sin stock"}</small>
+            <div class="d-flex justify-content-between align-items-center mb-3" style="min-height:1.8rem;">
+              <strong class="text-primary fs-5">$${formatearPrecio(libro.precio)}</strong>
+              <small class="${tieneStock ? 'badge bg-success bg-opacity-10 text-success' : 'badge bg-danger bg-opacity-10 text-danger'}">
+                ${tieneStock ? `✓ ${stockDisponible} disponible${stockDisponible > 1 ? 's' : ''}` : "Sin stock"}
+              </small>
             </div>
-            <button class="btn btn-primary btn-sm mt-auto" onclick="agregarAlCarrito('${libro.id}')" ${!tieneStock ? 'disabled' : ''}>
-              Agregar al carrito
+            <button class="btn ${tieneStock ? 'btn-primary' : 'btn-secondary'} btn-sm mt-auto" 
+                    onclick="agregarAlCarrito('${libro.id}')" ${!tieneStock ? 'disabled' : ''}>
+              ${tieneStock ? '🛒 Agregar al carrito' : '❌ Sin stock'}
             </button>
           </div>
         </div>
@@ -275,18 +259,21 @@ function renderLibros() {
   const count = document.querySelector("#resultCount");
   if (count) count.textContent = `Mostrando ${librosFiltrados.length} resultados`;
 
-  // Mostrar/ocultar mensaje de sin resultados
   const vacio = document.querySelector("#empty");
   if (vacio) vacio.classList.toggle("d-none", librosFiltrados.length > 0);
 }
 
-// Renderizar carrito lateral
 function renderCarrito() {
   const contenedor = document.querySelector("#cartItems");
   if (!contenedor) return;
 
   if (carrito.length === 0) {
-    contenedor.innerHTML = `<p class="text-center text-muted my-4">El carrito está vacío</p>`;
+    contenedor.innerHTML = `
+      <div class="text-center my-5 py-5">
+        <div class="empty-icon mb-3" style="font-size: 3rem;">🛒</div>
+        <p class="text-muted">El carrito está vacío</p>
+        <small class="text-muted">Agregá algunos libros para empezar</small>
+      </div>`;
   } else {
     const html = carrito.map(item => {
       const total = item.precio * item.cantidad;
@@ -294,19 +281,21 @@ function renderCarrito() {
         <div class="cart__row">
           <img src="${item.portada}" alt="" class="cart__thumb">
           <div class="flex-grow-1">
-            <div class="fw-semibold">${item.titulo}</div>
-            <div class="text-muted small">$${formatearPrecio(item.precio)} c/u</div>
-            <div class="d-flex align-items-center gap-2 mt-1">
-              <label class="small text-muted">Cantidad:</label>
+            <div class="fw-semibold mb-1">${item.titulo}</div>
+            <div class="text-muted small mb-2">$${formatearPrecio(item.precio)} c/u</div>
+            <div class="d-flex align-items-center gap-2">
+              <label class="small text-muted fw-semibold">Cantidad:</label>
               <input type="number" min="1" max="${item.stockMax}" value="${item.cantidad}"
-                class="form-control form-control-sm w-auto"
+                class="form-control form-control-sm w-auto shadow-sm"
+                style="max-width: 70px;"
                 onchange="cambiarCantidad('${item.id}', this.value)">
             </div>
           </div>
           <div class="text-end">
-            <div class="fw-bold">$${formatearPrecio(total)}</div>
-            <button class="btn btn-sm btn-outline-danger mt-1" onclick="quitarDelCarrito('${item.id}')">
-              ✕
+            <div class="fw-bold text-primary mb-2">$${formatearPrecio(total)}</div>
+            <button class="btn btn-sm btn-outline-danger" onclick="quitarDelCarrito('${item.id}')" 
+                    title="Eliminar producto">
+              🗑️
             </button>
           </div>
         </div>`;
@@ -317,7 +306,6 @@ function renderCarrito() {
   actualizarTotales();
 }
 
-// Actualizar totales del carrito
 function actualizarTotales() {
   let subtotal = 0;
   for (const item of carrito) {
@@ -326,19 +314,19 @@ function actualizarTotales() {
   const envio = subtotal > LIMITE_ENVIO_GRATIS ? 0 : COSTO_ENVIO;
   const total = subtotal + envio;
 
-  // Actualizar elementos del DOM
   const elementos = {
     subtotal: document.querySelector("#cSubtotal"),
     envio: document.querySelector("#cEnvio"),
     total: document.querySelector("#cTotal")
   };
 
-  if (elementos.subtotal) elementos.subtotal.textContent = formatearPrecio(subtotal);
-  if (elementos.envio) elementos.envio.textContent = formatearPrecio(envio);
-  if (elementos.total) elementos.total.textContent = formatearPrecio(total);
+  if (elementos.subtotal) elementos.subtotal.textContent = "$" + formatearPrecio(subtotal);
+  if (elementos.envio) {
+    elementos.envio.textContent = envio === 0 ? "GRATIS 🎉" : "$" + formatearPrecio(envio);
+  }
+  if (elementos.total) elementos.total.textContent = "$" + formatearPrecio(total);
 }
 
-// Llenar select de géneros
 function llenarSelectGeneros() {
   const select = document.querySelector("#genre");
   if (!select) return;
@@ -356,13 +344,11 @@ function llenarSelectGeneros() {
   select.innerHTML = opciones;
 }
 
-// Aplicar filtros de búsqueda
 function aplicarFiltros() {
   const busqueda = document.querySelector("#q").value.toLowerCase().trim();
   const generoSeleccionado = document.querySelector("#genre").value;
   const ordenamiento = document.querySelector("#sort").value;
 
-  // Filtrar libros
   librosFiltrados = libros.filter(libro => {
     const coincideBusqueda = !busqueda ||
       libro.titulo.toLowerCase().includes(busqueda) ||
@@ -373,7 +359,6 @@ function aplicarFiltros() {
     return coincideBusqueda && coincideGenero;
   });
 
-  // Ordenar resultados
   if (ordenamiento === "precio-asc") {
     librosFiltrados.sort((a, b) => a.precio - b.precio);
   } else if (ordenamiento === "precio-desc") {
@@ -385,7 +370,6 @@ function aplicarFiltros() {
   renderLibros();
 }
 
-// Limpiar todos los filtros
 function limpiarFiltros() {
   document.querySelector("#q").value = "";
   document.querySelector("#genre").value = "";
@@ -394,7 +378,6 @@ function limpiarFiltros() {
   mostrarToast("Filtros limpiados", "info");
 }
 
-// Abrir carrito lateral
 function abrirCarrito() {
   const cart = document.querySelector("#cart");
   const backdrop = document.querySelector("#backdrop");
@@ -405,7 +388,6 @@ function abrirCarrito() {
   renderCarrito();
 }
 
-// Cerrar carrito lateral
 function cerrarCarrito() {
   const cart = document.querySelector("#cart");
   const backdrop = document.querySelector("#backdrop");
@@ -414,7 +396,6 @@ function cerrarCarrito() {
   if (backdrop) backdrop.classList.remove("show");
 }
 
-// Proceso de checkout
 function procesarCheckout() {
   if (carrito.length === 0) {
     Swal.fire({
@@ -455,9 +436,7 @@ function procesarCheckout() {
   });
 }
 
-// Completar la compra
 function completarCompra() {
-  // Actualizar stock de libros
   for (const item of carrito) {
     const libro = libros.find(l => l.id === item.id);
     if (libro) {
@@ -467,17 +446,14 @@ function completarCompra() {
 
   guardarStock();
 
-  // Generar número de pedido
   const numeroPedido = Date.now().toString().slice(-6);
 
-  // Vaciar carrito
   carrito = [];
   guardarCarrito();
   renderCarrito();
   renderLibros();
   cerrarCarrito();
 
-  // Mostrar confirmación
   Swal.fire({
     icon: 'success',
     title: '¡Compra realizada!',
@@ -494,7 +470,6 @@ function completarCompra() {
   mostrarToast("¡Compra realizada con éxito! 🎉");
 }
 
-// Cambiar tema claro/oscuro
 function cambiarTema() {
   const body = document.body;
   const temaActual = body.getAttribute("data-theme") || "light";
@@ -509,7 +484,6 @@ function cambiarTema() {
   }
 }
 
-// Configurar tema inicial
 function configurarTemaInicial() {
   const temaGuardado = localStorage.getItem("tema_guardado");
   const prefiereOscuro = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -523,36 +497,29 @@ function configurarTemaInicial() {
   }
 }
 
-// Función para resetear filtros (expuesta globalmente para el navbar)
 function resetearFiltros() {
   limpiarFiltros();
 }
 
-// Configurar eventos del DOM
 function configurarEventos() {
-  // Búsqueda con debounce
   const busquedaConDebounce = debounce(aplicarFiltros, 400);
   document.querySelector("#q").addEventListener("input", busquedaConDebounce);
 
-  // Filtros
   document.querySelector("#genre").addEventListener("change", aplicarFiltros);
   document.querySelector("#sort").addEventListener("change", aplicarFiltros);
   document.querySelector("#btnClear").addEventListener("click", limpiarFiltros);
 
-  // Carrito
   document.querySelector("#btnOpenCart").addEventListener("click", abrirCarrito);
   document.querySelector("#btnCloseCart").addEventListener("click", cerrarCarrito);
   document.querySelector("#backdrop").addEventListener("click", cerrarCarrito);
   document.querySelector("#btnClearCart").addEventListener("click", vaciarCarrito);
   document.querySelector("#btnCheckout").addEventListener("click", procesarCheckout);
 
-  // Tema
   const btnTema = document.getElementById("btnToggleTheme");
   if (btnTema) {
     btnTema.addEventListener("click", cambiarTema);
   }
 
-  // Cerrar carrito con Escape
   document.addEventListener("keydown", (evento) => {
     if (evento.key === "Escape") {
       cerrarCarrito();
@@ -560,10 +527,8 @@ function configurarEventos() {
   });
 }
 
-// Exponer función globalmente para el onclick del navbar
 window.resetearFiltros = resetearFiltros;
 
-// Inicialización de la aplicación
 (async function inicializarApp() {
   try {
     configurarTemaInicial();
@@ -581,3 +546,22 @@ window.resetearFiltros = resetearFiltros;
     });
   }
 })();
+
+const scrollToTopBtn = document.getElementById('scrollToTop');
+
+if (scrollToTopBtn) {
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      scrollToTopBtn.classList.add('show');
+    } else {
+      scrollToTopBtn.classList.remove('show');
+    }
+  });
+
+  scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
