@@ -1,0 +1,30 @@
+html,
+body,
+.card,
+.navbar,
+.cart,
+.cart__backdrop {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+.text-muted {
+    color: var(--muted) !important;
+    opacity: 1;
+}
+
+.img-crop {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    background: var(--thumb);
+}
+
+.card,
+.cart__row {
+    border-color: var(--border);
+}

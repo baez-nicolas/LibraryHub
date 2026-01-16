@@ -1,0 +1,202 @@
+[
+    {
+        "id": "1",
+        "titulo": "Cien años de soledad",
+        "autor": "Gabriel García Márquez",
+        "anio": 1967,
+        "genero": "Realismo mágico",
+        "precio": 12990,
+        "stock": 3,
+        "portada": "./assets/portadas/cienAñosSoledad.jpg"
+    },
+    {
+        "id": "2",
+        "titulo": "El señor de los anillos",
+        "autor": "J.R.R. Tolkien",
+        "anio": 1954,
+        "genero": "Fantasía",
+        "precio": 19990,
+        "stock": 2,
+        "portada": "./assets/portadas/señorAnillos.jpg"
+    },
+    {
+        "id": "3",
+        "titulo": "1984",
+        "autor": "George Orwell",
+        "anio": 1949,
+        "genero": "Distopía",
+        "precio": 10990,
+        "stock": 15,
+        "portada": "./assets/portadas/georgeOrwell1984.png"
+    },
+    {
+        "id": "4",
+        "titulo": "Fahrenheit 451",
+        "autor": "Ray Bradbury",
+        "anio": 1953,
+        "genero": "Ciencia ficción",
+        "precio": 9990,
+        "stock": 10,
+        "portada": "./assets/portadas/fahrenheit451.jpg"
+    },
+    {
+        "id": "5",
+        "titulo": "El principito",
+        "autor": "Antoine de Saint-Exupéry",
+        "anio": 1943,
+        "genero": "Fábula",
+        "precio": 7999,
+        "stock": 20,
+        "portada": "./assets/portadas/elPrincipito.jpg"
+    },
+    {
+        "id": "6",
+        "titulo": "Crimen y castigo",
+        "autor": "Fiódor Dostoyevski",
+        "anio": 1866,
+        "genero": "Clásico",
+        "precio": 13990,
+        "stock": 7,
+        "portada": "./assets/portadas/crimenCastigo.jpg"
+    },
+    {
+        "id": "7",
+        "titulo": "Rayuela",
+        "autor": "Julio Cortázar",
+        "anio": 1963,
+        "genero": "Ficción",
+        "precio": 11990,
+        "stock": 9,
+        "portada": "./assets/portadas/rayuelaJC.png"
+    },
+    {
+        "id": "8",
+        "titulo": "La sombra del viento",
+        "autor": "Carlos Ruiz Zafón",
+        "anio": 2001,
+        "genero": "Misterio",
+        "precio": 12990,
+        "stock": 11,
+        "portada": "./assets/portadas/laSombraViento.jpg"
+    },
+    {
+        "id": "9",
+        "titulo": "El nombre del viento",
+        "autor": "Patrick Rothfuss",
+        "anio": 2007,
+        "genero": "Fantasía",
+        "precio": 15990,
+        "stock": 6,
+        "portada": "./assets/portadas/nombreViento.jpg"
+    },
+    {
+        "id": "10",
+        "titulo": "El código Da Vinci",
+        "autor": "Dan Brown",
+        "anio": 2003,
+        "genero": "Thriller",
+        "precio": 10990,
+        "stock": 13,
+        "portada": "./assets/portadas/codigoDaVinci.jpg"
+    },
+    {
+        "id": "11",
+        "titulo": "It",
+        "autor": "Stephen King",
+        "anio": 1986,
+        "genero": "Terror",
+        "precio": 14990,
+        "stock": 5,
+        "portada": "./assets/portadas/it.jpg"
+    },
+    {
+        "id": "12",
+        "titulo": "Sapiens",
+        "autor": "Yuval Noah Harari",
+        "anio": 2011,
+        "genero": "Ensayo",
+        "precio": 17990,
+        "stock": 10,
+        "portada": "./assets/portadas/sapiens.jpg"
+    },
+    {
+        "id": "13",
+        "titulo": "El alquimista",
+        "autor": "Paulo Coelho",
+        "anio": 1988,
+        "genero": "Ficción",
+        "precio": 8990,
+        "stock": 18,
+        "portada": "./assets/portadas/elAlquimista.jpg"
+    },
+    {
+        "id": "14",
+        "titulo": "La insoportable levedad del ser",
+        "autor": "Milan Kundera",
+        "anio": 1984,
+        "genero": "Filosófica",
+        "precio": 11990,
+        "stock": 9,
+        "portada": "./assets/portadas/laInsoportableLevedadDelSer.jpg"
+    },
+    {
+        "id": "15",
+        "titulo": "Harry potter",
+        "autor": "J.K. Rowling",
+        "anio": 1997,
+        "genero": "Realismo mágico",
+        "precio": 34990,
+        "stock": 14,
+        "portada": "./assets/portadas/harryPotterPiedraFilosofal.jpg"
+    },
+    {
+        "id": "16",
+        "titulo": "Orgullo y prejuicio",
+        "autor": "Jane Austen",
+        "anio": 1813,
+        "genero": "Romance",
+        "precio": 9990,
+        "stock": 16,
+        "portada": "./assets/portadas/orgulloPrejuicio.jpg"
+    },
+    {
+        "id": "17",
+        "titulo": "Don Quijote de la Mancha",
+        "autor": "Miguel de Cervantes",
+        "anio": 1605,
+        "genero": "Clásico",
+        "precio": 14990,
+        "stock": 8,
+        "portada": "./assets/portadas/donQuijote.jpg"
+    },
+    {
+        "id": "18",
+        "titulo": "Los juegos del hambre",
+        "autor": "Suzanne Collins",
+        "anio": 2008,
+        "genero": "Ciencia ficción",
+        "precio": 13990,
+        "stock": 12,
+        "portada": "./assets/portadas/juegosHambre.jpg"
+    },
+    {
+        "id": "19",
+        "titulo": "La ladrona de libros",
+        "autor": "Markus Zusak",
+        "anio": 2005,
+        "genero": "Histórica",
+        "precio": 12990,
+        "stock": 10,
+        "portada": "./assets/portadas/ladronaLibros.jpg"
+    },
+    {
+        "id": "20",
+        "titulo": "Moby-Dick",
+        "autor": "Herman Melville",
+        "anio": 1851,
+        "genero": "Aventura",
+        "precio": 11990,
+        "stock": 2,
+        "portada": "./assets/portadas/mobyDick.jpg"
+    }
+]

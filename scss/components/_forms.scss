@@ -1,0 +1,33 @@
+.form-control,
+.form-select {
+    background-color: var(--card);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.form-control::placeholder {
+    color: var(--muted);
+    opacity: 1;
+}
+
+.form-select option {
+    background: var(--card);
+    color: var(--text);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, .25);
+}
+
+.btn-outline-secondary {
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.btn-outline-secondary:hover {
+    background: var(--thumb);
+    color: var(--text);
+    border-color: var(--border);
+}

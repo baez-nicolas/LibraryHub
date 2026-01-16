@@ -1,0 +1,13 @@
+.navbar {
+    background: var(--nav-bg) !important;
+    border-bottom: 1px solid var(--nav-border) !important;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+    color: var(--nav-text) !important;
+}
+
+body[data-theme="dark"] .navbar .navbar-toggler-icon {
+    filter: invert(1) brightness(1.2);
+}
