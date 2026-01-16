@@ -565,3 +565,96 @@ if (scrollToTopBtn) {
     });
   });
 }
+
+function inicializarAnimaciones() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(card);
+  });
+}
+
+function optimizarImagenes() {
+  const imagenes = document.querySelectorAll('img');
+  imagenes.forEach(img => {
+    if ('loading' in HTMLImageElement.prototype) {
+      img.loading = 'lazy';
+    }
+  });
+}
+
+function manejarErroresImagen() {
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function() {
+      this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="300"%3E%3Crect fill="%23e2e8f0" width="200" height="300"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" fill="%2394a3b8"%3ESin imagen%3C/text%3E%3C/svg%3E';
+    });
+  });
+}
+
+function aplicarTemaNavegador() {
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if (!metaTheme) {
+    const meta = document.createElement('meta');
+    meta.name = 'theme-color';
+    meta.content = document.body.dataset.theme === 'dark' ? '#0f172a' : '#ffffff';
+    document.head.appendChild(meta);
+  } else {
+    metaTheme.content = document.body.dataset.theme === 'dark' ? '#0f172a' : '#ffffff';
+  }
+}
+
+function detectarTemaAutomatico() {
+  if (!localStorage.getItem('tema') && window.matchMedia) {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) {
+      document.body.dataset.theme = 'dark';
+      aplicarTemaNavegador();
+    }
+  }
+}
+
+function agregarEfectoHoverLibros() {
+  const grid = document.querySelector('#grid');
+  if (!grid) return;
+
+  grid.addEventListener('mouseenter', (e) => {
+    const card = e.target.closest('.card');
+    if (card) {
+      card.style.transform = 'translateY(-8px) scale(1.03)';
+      card.style.boxShadow = '0 12px 24px rgba(99, 102, 241, 0.25)';
+      card.style.zIndex = '10';
+    }
+  }, true);
+
+  grid.addEventListener('mouseleave', (e) => {
+    const card = e.target.closest('.card');
+    if (card) {
+      card.style.transform = 'translateY(0) scale(1)';
+      card.style.boxShadow = '';
+      card.style.zIndex = '';
+    }
+  }, true);
+}
+
+setTimeout(() => {
+  inicializarAnimaciones();
+  optimizarImagenes();
+  manejarErroresImagen();
+  detectarTemaAutomatico();
+  agregarEfectoHoverLibros();
+}, 100);
