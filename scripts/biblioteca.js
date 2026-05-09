@@ -237,8 +237,8 @@ function renderLibros() {
               ${libro.titulo}
             </h3>
             <p class="text-muted small mb-3" style="min-height:2.2rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
-              <span class="d-block"><strong>📝 ${libro.autor}</strong></span>
-              <span class="d-block">📚 ${libro.genero} • 📅 ${libro.anio}</span>
+              <span class="d-block"><strong>${libro.autor}</strong></span>
+              <span class="d-block">${libro.genero} &middot; ${libro.anio}</span>
             </p>
             <div class="d-flex justify-content-between align-items-center mb-3" style="min-height:1.8rem;">
               <strong class="text-primary fs-5">$${formatearPrecio(libro.precio)}</strong>
@@ -248,7 +248,7 @@ function renderLibros() {
             </div>
             <button class="btn ${tieneStock ? 'btn-primary' : 'btn-secondary'} btn-sm mt-auto" 
                     onclick="agregarAlCarrito('${libro.id}')" ${!tieneStock ? 'disabled' : ''}>
-              ${tieneStock ? '🛒 Agregar al carrito' : '❌ Sin stock'}
+              ${tieneStock ? 'Agregar al carrito' : 'Sin stock'}
             </button>
           </div>
         </div>
@@ -270,7 +270,9 @@ function renderCarrito() {
   if (carrito.length === 0) {
     contenedor.innerHTML = `
       <div class="text-center my-5 py-5">
-        <div class="empty-icon mb-3" style="font-size: 3rem;">🛒</div>
+        <div class="empty-icon mb-3" style="color: var(--muted); opacity: 0.5;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+        </div>
         <p class="text-muted">El carrito está vacío</p>
         <small class="text-muted">Agregá algunos libros para empezar</small>
       </div>`;
@@ -295,7 +297,7 @@ function renderCarrito() {
             <div class="fw-bold text-primary mb-2">$${formatearPrecio(total)}</div>
             <button class="btn btn-sm btn-outline-danger" onclick="quitarDelCarrito('${item.id}')" 
                     title="Eliminar producto">
-              🗑️
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
             </button>
           </div>
         </div>`;
@@ -322,7 +324,7 @@ function actualizarTotales() {
 
   if (elementos.subtotal) elementos.subtotal.textContent = "$" + formatearPrecio(subtotal);
   if (elementos.envio) {
-    elementos.envio.textContent = envio === 0 ? "GRATIS 🎉" : "$" + formatearPrecio(envio);
+    elementos.envio.textContent = envio === 0 ? "GRATIS" : "$" + formatearPrecio(envio);
   }
   if (elementos.total) elementos.total.textContent = "$" + formatearPrecio(total);
 }
@@ -467,7 +469,7 @@ function completarCompra() {
     confirmButtonText: 'Excelente'
   });
 
-  mostrarToast("¡Compra realizada con éxito! 🎉");
+  mostrarToast("\u00a1Compra realizada con éxito!");
 }
 
 function cambiarTema() {
@@ -477,11 +479,6 @@ function cambiarTema() {
 
   body.setAttribute("data-theme", nuevoTema);
   localStorage.setItem("tema_guardado", nuevoTema);
-
-  const boton = document.getElementById("btnToggleTheme");
-  if (boton) {
-    boton.textContent = nuevoTema === "dark" ? "☀️" : "🌙";
-  }
 }
 
 function configurarTemaInicial() {
@@ -490,11 +487,6 @@ function configurarTemaInicial() {
   const tema = temaGuardado || (prefiereOscuro ? "dark" : "light");
 
   document.body.setAttribute("data-theme", tema);
-
-  const boton = document.getElementById("btnToggleTheme");
-  if (boton) {
-    boton.textContent = tema === "dark" ? "☀️" : "🌙";
-  }
 }
 
 function resetearFiltros() {

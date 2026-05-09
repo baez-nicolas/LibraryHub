@@ -1,33 +1,33 @@
 :root {
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --primary-light: #818cf8;
-  --primary-2: #8b5cf6;
-  --bg: #f8fafc;
+  --primary: #1e3a6e;
+  --primary-dark: #152d57;
+  --primary-light: #3d69b5;
+  --primary-2: #b8860b;
+  --bg: #f7f5f2;
   --text: #0f172a;
-  --muted: #64748b;
+  --muted: #6b7280;
   --card: #fff;
-  --border: #e2e8f0;
-  --thumb: #f1f5f9;
-  --primary-gradient-start: #6366f1;
-  --primary-gradient-end: #8b5cf6;
+  --border: #e5e7eb;
+  --thumb: #f3f4f6;
+  --primary-gradient-start: #1e3a6e;
+  --primary-gradient-end: #b8860b;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0/0.05);
   --shadow: 0 4px 6px -1px rgb(0 0 0/0.1), 0 2px 4px -2px rgb(0 0 0/0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0/0.1), 0 4px 6px -4px rgb(0 0 0/0.1);
 }
 body[data-theme='dark'] {
-  --primary: #818cf8;
-  --primary-dark: #6366f1;
-  --primary-light: #a5b4fc;
-  --primary-2: #a78bfa;
-  --bg: #0f172a;
+  --primary: #e8b84b;
+  --primary-dark: #c9950c;
+  --primary-light: #f0cc7a;
+  --primary-2: #2d5ba3;
+  --bg: #060d1e;
   --text: #f1f5f9;
   --muted: #94a3b8;
-  --card: #1e293b;
-  --border: #334155;
-  --thumb: #334155;
-  --primary-gradient-start: #818cf8;
-  --primary-gradient-end: #a78bfa;
+  --card: #0d1b35;
+  --border: #1a2f50;
+  --thumb: #1a2f50;
+  --primary-gradient-start: #e8b84b;
+  --primary-gradient-end: #2d5ba3;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0/0.3);
   --shadow: 0 4px 6px -1px rgb(0 0 0/0.3), 0 2px 4px -2px rgb(0 0 0/0.3);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0/0.4), 0 4px 6px -4px rgb(0 0 0/0.4);
@@ -76,8 +76,14 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-    Arial, sans-serif;
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
   line-height: 1.6;
 }
 
@@ -162,6 +168,22 @@ body[data-theme='dark'] .navbar .navbar-toggler-icon {
   filter: invert(1) brightness(1.2);
 }
 
+.icon-theme-sun {
+  display: none;
+}
+
+.icon-theme-moon {
+  display: block;
+}
+
+body[data-theme='dark'] .icon-theme-sun {
+  display: block;
+}
+
+body[data-theme='dark'] .icon-theme-moon {
+  display: none;
+}
+
 .hero {
   background: linear-gradient(
     135deg,
@@ -228,9 +250,25 @@ body[data-theme='dark'] .navbar .navbar-toggler-icon {
 
 .hero-title {
   text-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.2),
-    0 2px 4px rgba(0, 0, 0, 0.1);
-  letter-spacing: -0.5px;
+    0 4px 16px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.15);
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+}
+
+.hero-title-accent {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.hero-subtitle {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.15rem;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 .hero-stars {
@@ -245,9 +283,12 @@ body[data-theme='dark'] .navbar .navbar-toggler-icon {
 
 .hero-stars::before,
 .hero-stars::after {
-  content: '✨';
+  content: '';
   position: absolute;
-  font-size: 1.5rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
   animation: twinkle 3s ease-in-out infinite;
   opacity: 0;
 }
@@ -345,7 +386,7 @@ body[data-theme='dark'] .navbar .navbar-toggler-icon {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 8px 16px rgba(30, 58, 110, 0.15);
   border-color: var(--primary-light);
 }
 
@@ -404,7 +445,7 @@ body[data-theme='dark'] .navbar .navbar-toggler-icon {
   align-items: center;
   background: linear-gradient(135deg, var(--primary), var(--primary-2));
   color: white;
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 2px 8px rgba(30, 58, 110, 0.2);
 }
 
 .cart__header h2 {
@@ -501,7 +542,7 @@ body[data-theme='dark'] .cart__footer strong {
 .form-control:hover,
 .form-select:hover {
   border-color: var(--primary-light);
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.1);
+  box-shadow: 0 2px 8px rgba(30, 58, 110, 0.1);
 }
 
 .form-control::placeholder {
@@ -518,8 +559,8 @@ body[data-theme='dark'] .cart__footer strong {
 .form-select:focus {
   border-color: var(--primary);
   box-shadow:
-    0 0 0 0.25rem rgba(99, 102, 241, 0.15),
-    0 4px 8px rgba(99, 102, 241, 0.1);
+    0 0 0 0.25rem rgba(30, 58, 110, 0.15),
+    0 4px 8px rgba(30, 58, 110, 0.1);
   transform: translateY(-2px);
   background: var(--card);
   outline: none;
@@ -549,7 +590,7 @@ body[data-theme='dark'] .cart__footer strong {
 
 .btn-primary:hover:not(:disabled) {
   background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 12px rgba(30, 58, 110, 0.3);
 }
 
 .btn-outline-secondary {
@@ -669,7 +710,7 @@ body[data-theme='dark'] .cart__footer strong {
   color: white;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 2px 8px rgba(30, 58, 110, 0.3);
 }
 
 .social-icon svg {
@@ -678,7 +719,7 @@ body[data-theme='dark'] .cart__footer strong {
 
 .social-icon:hover {
   transform: translateY(-5px) rotate(10deg) scale(1.1);
-  box-shadow: 0 8px 16px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 8px 16px rgba(30, 58, 110, 0.4);
 }
 
 .footer hr {
@@ -1005,19 +1046,21 @@ body[data-theme='dark'] .cart__footer strong {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 50px;
-  height: 50px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--primary), var(--primary-2));
   color: white;
   border: none;
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 4px 12px rgba(30, 58, 110, 0.4);
   z-index: 1000;
 }
 
@@ -1029,7 +1072,7 @@ body[data-theme='dark'] .cart__footer strong {
 
 .scroll-to-top:hover {
   transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5);
+  box-shadow: 0 8px 20px rgba(30, 58, 110, 0.5);
 }
 
 .scroll-to-top:active {
