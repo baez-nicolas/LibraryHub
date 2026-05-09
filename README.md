@@ -21,8 +21,8 @@
 - Diseño de cards moderno y profesional
 
 ### 🔍 Filtros Avanzados
-- Búsqueda por título o autor en tiempo real
-- Filtro por género y ordenamiento (precio, nombre, autor)
+- Búsqueda por título o autor
+- Filtro por género y ordenamiento
 
 ### 🛒 Carrito de Compras
 - Control de cantidad con límite de stock
@@ -32,10 +32,6 @@
 ### 🎨 Tema Oscuro/Claro
 - Switch de tema con persistencia de preferencia
 - Transiciones suaves entre modos
-
-### 📱 Diseño Responsive
-- 100% adaptable a móviles, tablets y desktop
-- Navbar colapsable y grid responsive
 
 ---
 
