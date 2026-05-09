@@ -51,12 +51,6 @@
 | **LocalStorage** | Persistencia de datos |
 | **Vercel** | Hosting |
 
-### Stack Técnico
-- **Vanilla JavaScript** con Async/Await y Fetch API
-- **LocalStorage API** para persistencia de carrito y stock
-- **Bootstrap 5** para diseño responsive
-- **Debounce** para optimización de búsquedas
-
 ---
 
 ## 🛠️ Instalación Local
@@ -84,23 +78,6 @@ Opción B - Simplemente abrir el archivo:
 ```
 Doble click en index.html
 ```
-
----
-
-## 🎨 Características Técnicas
-
-### Funcionalidades JavaScript
-- **Carga asíncrona de datos:** `fetch()` + JSON
-- **Filtrado en tiempo real:** Búsqueda con debounce
-- **Gestión de estado:** Carrito y stock sincronizados
-- **Persistencia:** LocalStorage API
-- **DOM Manipulation:** Renderizado dinámico
-- **Event Delegation:** Manejo eficiente de eventos
-
-### Librerías Externas
-- **Bootstrap:** Grid, navbar, modales, utilities
-- **Toastify:** Notificaciones no intrusivas
-- **SweetAlert2:** Modales elegantes y customizables
 
 ---
 
