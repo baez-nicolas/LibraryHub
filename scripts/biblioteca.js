@@ -471,7 +471,7 @@ function completarCompra() {
 
   mostrarToast("\u00a1Compra realizada con éxito!");
 }
-
+ //nestor
 function cambiarTema() {
   const body = document.body;
   const temaActual = body.getAttribute("data-theme") || "light";
