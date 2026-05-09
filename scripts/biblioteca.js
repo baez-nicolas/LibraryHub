@@ -306,7 +306,7 @@ function renderLibros() {
     const tieneStock = stockDisponible > 0;
 
     return `
-      <div class="col-6 col-sm-6 col-lg-3">
+      <div class="col-6 col-md-4 col-lg-3">
         <div class="card h-100">
           <img src="${libro.portada}" class="card-img-top img-crop card-img-clickable" alt="${libro.titulo}"
                onclick="abrirDetalleLibro('${libro.id}')" title="Ver detalle">
