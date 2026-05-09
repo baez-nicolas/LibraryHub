@@ -21,8 +21,8 @@
 - Diseño de cards moderno y profesional
 
 ### 🔍 Filtros Avanzados
-- Búsqueda por título o autor en tiempo real
-- Filtro por género y ordenamiento (precio, nombre, autor)
+- Búsqueda por título o autor
+- Filtro por género y ordenamiento
 
 ### 🛒 Carrito de Compras
 - Control de cantidad con límite de stock
@@ -32,10 +32,6 @@
 ### 🎨 Tema Oscuro/Claro
 - Switch de tema con persistencia de preferencia
 - Transiciones suaves entre modos
-
-### 📱 Diseño Responsive
-- 100% adaptable a móviles, tablets y desktop
-- Navbar colapsable y grid responsive
 
 ---
 
@@ -51,19 +47,7 @@
 | **LocalStorage** | Persistencia de datos |
 | **Vercel** | Hosting |
 
-### Stack Técnico
-- **Vanilla JavaScript** con Async/Await y Fetch API
-- **LocalStorage API** para persistencia de carrito y stock
-- **Bootstrap 5** para diseño responsive
-- **Debounce** para optimización de búsquedas
-
 ---
-
-## 🛠️ Instalación Local
-
-### Requisitos Previos
-- Navegador moderno (Chrome, Firefox, Edge, Safari)
-- Servidor local (opcional:  Live Server, Python, etc.)
 
 ### Pasos
 
@@ -84,23 +68,6 @@ Opción B - Simplemente abrir el archivo:
 ```
 Doble click en index.html
 ```
-
----
-
-## 🎨 Características Técnicas
-
-### Funcionalidades JavaScript
-- **Carga asíncrona de datos:** `fetch()` + JSON
-- **Filtrado en tiempo real:** Búsqueda con debounce
-- **Gestión de estado:** Carrito y stock sincronizados
-- **Persistencia:** LocalStorage API
-- **DOM Manipulation:** Renderizado dinámico
-- **Event Delegation:** Manejo eficiente de eventos
-
-### Librerías Externas
-- **Bootstrap:** Grid, navbar, modales, utilities
-- **Toastify:** Notificaciones no intrusivas
-- **SweetAlert2:** Modales elegantes y customizables
 
 ---
 
@@ -136,8 +103,6 @@ Doble click en index.html
 
 <div align="center">
 
-**[⬆ Volver arriba](#-libraryhub)**
-
-Hecho con ❤️ y 📚 para los amantes de la lectura
+**[Volver arriba](#-libraryhub)**
 
 </div>
