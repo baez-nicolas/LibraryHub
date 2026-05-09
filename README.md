@@ -49,12 +49,6 @@
 
 ---
 
-## 🛠️ Instalación Local
-
-### Requisitos Previos
-- Navegador moderno (Chrome, Firefox, Edge, Safari)
-- Servidor local (opcional:  Live Server, Python, etc.)
-
 ### Pasos
 
 1. **Clonar el repositorio**
