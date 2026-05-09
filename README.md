@@ -136,8 +136,6 @@ Doble click en index.html
 
 <div align="center">
 
-**[⬆ Volver arriba](#-libraryhub)**
-
-Hecho con ❤️ y 📚 para los amantes de la lectura
+**[Volver arriba](#-libraryhub)**
 
 </div>
