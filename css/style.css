@@ -963,7 +963,7 @@ body[data-theme='light'] .footer {
   padding: 3rem 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .navbar {
     padding: 0.5rem 0;
   }
