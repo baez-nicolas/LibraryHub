@@ -463,16 +463,6 @@ function hayFiltrosActivos() {
 }
 
 function actualizarBotonLimpiar() {
-  const btn = document.querySelector("#btnClear");
-  if (!btn) return;
-  if (hayFiltrosActivos()) {
-    btn.classList.remove("btn-clear-hidden");
-    btn.classList.add("btn-clear-visible");
-  } else {
-    btn.classList.remove("btn-clear-visible");
-    btn.classList.add("btn-clear-hidden");
-  }
-
   const badge = document.querySelector("#badgeFilters");
   if (!badge) return;
   const count = [document.querySelector("#q").value.trim(), document.querySelector("#genre").value, document.querySelector("#sort").value !== "todos" ? "x" : ""].filter(Boolean).length;
