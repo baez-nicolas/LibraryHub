@@ -6,7 +6,7 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)
 
-<img src="/img/logo1.png" width="400" alt="Banner" />
+<img src="/img/portadaLibraryHub.png" width="600" alt="Banner" />
 
 **LibraryHub** es una librería online moderna y elegante donde podés explorar, filtrar y comprar libros.  Diseño responsive, tema oscuro/claro, carrito funcional con persistencia y gestión de stock en tiempo real. 
 
@@ -88,6 +88,8 @@ Doble click en index.html
 - Búsqueda por texto + género simultáneamente
 - Ordenamiento independiente de filtros
 - Reset de filtros con un click
+
+<img src="/img/logo2.png" width="600" alt="Banner" />
 
 ---
 
